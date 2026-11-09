@@ -1,0 +1,24 @@
+// Created by Crowbar 0.74
+
+  Compiling "v_chez.qc" ...
+    Output from compiler "D:\SteamLibrary\steamapps\common\Half-Life SDK\Model Tools\studiomdl.exe": 
+      entering v_chez.qc
+      grabbing ./v_chez.smd
+      grabbing ./anims/deploy.smd
+      grabbing ./anims/idle.smd
+      grabbing ./anims/eat.smd
+      grabbing ./anims/throw.smd
+      BMP ld_hev_arm.bmp [256 128] (100%)   33536 bytes
+      BMP ld_hev_glove.bmp [256 256] (100%)   66304 bytes
+      BMP chez.bmp [256 256] (100%)   66304 bytes
+      ---------------------
+      writing v_chez.mdl:
+      bones       3220 bytes (26)
+      sequences  10016 bytes (239 frames) [0:09]
+      vertices   12312 bytes (487 vertices, 460 normals)
+      mesh       10784 bytes (941 tris, 177 strips)
+      models     23284 bytes
+      textures  166392 bytes
+      total     202912
+    CROWBAR: Moved compiled model file "D:\SteamLibrary\steamapps\common\Half-Life\modelsrc\v_chez\v_chez.mdl" to "D:\SteamLibrary\steamapps\common\Half-Life\goldsandbox\models"
+  ... Compiling "v_chez.qc" finished. Check above for any errors.

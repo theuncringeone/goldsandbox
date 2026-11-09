@@ -1,0 +1,200 @@
+@BaseClass = Sequence
+[
+	sequence(integer) : "Animation Sequence (editor)"
+]
+
+@BaseClass = ZHLT
+[
+	zhlt_lightflags(choices) : "ZHLT Lightflags" : 0 =
+	[
+		0 : "Default"
+		1 : "Embedded Fix"
+		2 : "Opaque (blocks light)"
+		3 : "Opaque + Embedded fix"
+		6 : "Opaque + Concave Fix"
+	]
+	light_origin(string) : "Light Origin Target"
+]
+
+@BaseClass = ZHLT_point
+[
+	_fade(string) : "ZHLT Fade" : "1.0"
+	_falloff(choices) : "ZHLT Falloff" : 0 =
+	[
+		0 : "Default"
+		1 : "Inverse Linear"
+		2 : "Inverse Square"
+	]
+]
+
+@BaseClass = Appearflags
+[
+	spawnflags(Flags) =
+	[
+		2048 : "Not in Deathmatch" : 0
+	]
+]
+
+@BaseClass = Angles
+[
+	angles(string) : "Pitch Yaw Roll (Y Z X)" : "0 0 0"
+]
+
+@BaseClass size(0 0 0, 32 32 32) color(80 0 200) base(Appearflags) = Ammo []
+
+@BaseClass = Targetname 
+[ 
+	targetname(target_source) : "Name"
+]
+@BaseClass = Target 
+[ 
+	target(target_destination) : "Target" 
+]
+@BaseClass size(-16 -16 0, 16 16 32) color(0 0 200) base(Targetname, Appearflags, Angles) = Weapon []
+@BaseClass = Global 
+[ 
+	globalname(string) : "Global Entity Name" 
+]
+
+@BaseClass base(Target) = Targetx 
+[
+	delay(string) : "Delay before trigger" : "0"
+	killtarget(target_destination) : "KillTarget"
+]
+
+@BaseClass = RenderFxChoices
+[
+	renderfx(choices) :"Render FX" : 0 =
+	[
+		0: "Normal"
+		1: "Slow Pulse"
+		2: "Fast Pulse"
+		3: "Slow Wide Pulse"
+		4: "Fast Wide Pulse"
+		9: "Slow Strobe"
+		10: "Fast Strobe"
+		11: "Faster Strobe"
+		12: "Slow Flicker"
+		13: "Fast Flicker"
+		5: "Slow Fade Away"
+		6: "Fast Fade Away"
+		7: "Slow Become Solid"
+		8: "Fast Become Solid"
+		14: "Constant Glow"
+		15: "Distort"
+		16: "Hologram (Distort + fade)"
+	]
+]
+
+@BaseClass base(RenderFxChoices) = RenderFields 
+[
+	rendermode(choices) : "Render Mode" : 0 =
+	[
+		0: "Normal"
+		1: "Color"
+		2: "Texture"
+		3: "Glow"
+		4: "Solid"
+		5: "Additive"
+	]
+	renderamt(integer) : "FX Amount (1 - 255)"
+	rendercolor(color255) : "FX Color (R G B)" : "0 0 0"
+]
+
+@BaseClass base(Appearflags, Angles) size(-16 -16 -36, 16 16 36) color(0 255 0) = PlayerClass []
+
+@BaseClass base(Target, Targetname, RenderFields, Angles) color(0 200 200) = Monster 
+[
+	TriggerTarget(String) : "TriggerTarget"
+      TriggerCondition(Choices) : "Trigger Condition" : 0 =
+	[
+		0 : "No Trigger"
+		1 : "See Player, Mad at Player"
+		2 : "Take Damage"
+		3 : "50% Health Remaining"
+		4 : "Death"
+		7 : "Hear World"
+		8 : "Hear Player"
+		9 : "Hear Combat"
+		10: "See Player Unconditional"
+		11: "See Player, Not In Combat"
+	]
+	spawnflags(Flags) = 
+	[
+		1 : "WaitTillSeen" 	: 0
+		2 : "Gag"		: 0
+		4 : "MonsterClip"	: 0
+		16: "Prisoner"		: 0
+		128: "WaitForScript" 	: 0
+		256: "Pre-Disaster" 	: 0
+		512: "Fade Corpse"	: 0
+	]
+]
+
+@BaseClass = TalkMonster
+[
+	UseSentence(String) : "Use Sentence"
+	UnUseSentence(String) : "Un-Use Sentence"
+]
+
+@BaseClass base(Targetname, Angles) size(-16 -16 -16, 16 16 16) = gibshooterbase
+[
+	// how many pieces to create
+	m_iGibs(integer) : "Number of Gibs" : 3
+	
+	// delay (in seconds) between shots. If 0, all gibs shoot at once.
+	delay(string) : "Delay between shots" : "0"
+
+	// how fast the gibs are fired
+	m_flVelocity(integer) : "Gib Velocity" : 200
+
+	// Course variance
+	m_flVariance(string) : "Course Variance" : "0.15"
+
+	// Time in seconds for gibs to live +/- 5%
+	m_flGibLife(string) : "Gib Life" : "4"
+
+	spawnflags(Flags) = 
+	[
+		1 : "Repeatable" 	: 0
+	]
+]
+
+@BaseClass = Light 
+[
+	_light(color255) : "Brightness" : "255 255 128 200"
+      style(Choices) : "Appearance" : 0 =
+	[
+		0 : "Normal"
+		10: "Fluorescent flicker"
+		2 : "Slow, strong pulse"
+		11: "Slow pulse, noblack"
+		5 : "Gentle pulse"
+		1 : "Flicker A"
+		6 : "Flicker B"
+		3 : "Candle A"
+		7 : "Candle B"
+		8 : "Candle C"
+		4 : "Fast strobe"
+		9 : "Slow strobe"
+	]
+	pattern(string) : "Custom Appearance"
+]
+
+
+@PointClass base(Targetname, Angles, RenderFields, ZHLT) studio() =  prop_pickupable: "Pickupable object"
+[
+    model(studio) : "Model"
+
+    distance(integer) : "Distance to player" : 48
+]
+
+@SolidClass base(Targetname, Angles, RenderFields, ZHLT) =  func_pickupable: "Pickupable brush"
+[
+    distance(integer) : "Distance to player" : 48
+]
+
+@PointClass base(Targetname) = good_day : "I like to say hello and welcome you, good day, that is my name"
+[
+    
+]

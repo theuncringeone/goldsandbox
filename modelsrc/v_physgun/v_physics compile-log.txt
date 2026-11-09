@@ -1,0 +1,22 @@
+// Created by Crowbar 0.74
+
+  Compiling "v_physics.qc" ...
+    Output from compiler "D:\SteamLibrary\steamapps\common\Half-Life SDK\Model Tools\studiomdl.exe": 
+      entering v_physics.qc
+      grabbing ./v_physics.smd
+      grabbing ./anims\idle.smd
+      grabbing ./anims\deploy.smd
+      BMP w_physics.bmp [256 256] (100%)   66304 bytes
+      BMP ld_hev_arm.bmp [256 128] (100%)   33536 bytes
+      BMP ld_hev_glove.bmp [256 256] (100%)   66304 bytes
+      ---------------------
+      writing v_physics.mdl:
+      bones       5348 bytes (45)
+      sequences   2312 bytes (16 frames) [0:00]
+      vertices   29332 bytes (1141 vertices, 1115 normals)
+      mesh       24412 bytes (1981 tris, 472 strips)
+      models     53932 bytes
+      textures  166392 bytes
+      total     227984
+    CROWBAR: Moved compiled model file "D:\SteamLibrary\steamapps\common\Half-Life\modelsrc\v_physgun\v_physics.mdl" to "D:\SteamLibrary\steamapps\common\Half-Life\goldsandbox\models"
+  ... Compiling "v_physics.qc" finished. Check above for any errors.
